@@ -1,4 +1,4 @@
-package com.sample;
+package com.sample.infrastructure;
 
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;

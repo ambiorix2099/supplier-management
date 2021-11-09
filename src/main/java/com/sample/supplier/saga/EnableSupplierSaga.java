@@ -1,6 +1,6 @@
 package com.sample.supplier.saga;
 
-import com.sample.LocalMessageBus;
+import com.sample.infrastructure.LocalMessageBus;
 import com.sample.supplier.api.EnableSupplierCommand;
 import com.sample.supplier.api.SupplierAddedEvent;
 import com.sample.supplier.api.SupplierStatus;

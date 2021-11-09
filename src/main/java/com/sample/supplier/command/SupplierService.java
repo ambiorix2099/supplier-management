@@ -3,7 +3,7 @@ package com.sample.supplier.command;
 import com.netflix.graphql.dgs.DgsComponent;
 import com.netflix.graphql.dgs.DgsMutation;
 import com.netflix.graphql.dgs.InputArgument;
-import com.sample.LocalMessageBus;
+import com.sample.infrastructure.LocalMessageBus;
 import com.sample.supplier.api.AddSupplierCommand;
 import com.sample.supplier.api.EnableSupplierCommand;
 import com.sample.supplier.api.SupplierAddedEvent;

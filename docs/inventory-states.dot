@@ -1,0 +1,20 @@
+digraph finite_state_machine {
+  // Formats
+  graph [fontname = "roboto"];
+  node [fontname = "roboto"];
+  edge [fontname = "roboto"];
+	size="8,5"
+
+  // Title
+  labelloc="t";
+  label="Inventory Aggregate Lifecycle\n\n";
+
+  // Body
+	rankdir=LR;
+  init [label="", shape=point]
+	node [shape = doublecircle]; ORDERED RECEIVED;
+	node [shape = circle];
+	init -> ORDERING;
+	ORDERING -> ORDERED;
+	ORDERED -> RECEIVED;
+}

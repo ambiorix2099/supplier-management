@@ -1,0 +1,8 @@
+snowflake:
+  data-center: 1
+  worker-id: 1
+spring:
+  r2dbc:
+    url: r2dbc:h2:mem://./suppliersdb
+    username: sa
+    password: password

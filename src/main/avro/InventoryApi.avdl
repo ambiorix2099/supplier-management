@@ -1,0 +1,55 @@
+@namespace("com.sample.inventory.api")
+protocol InventoryApi {
+	enum InventoryOrderStatus {ORDERING, ORDERED, RECEIVED}
+
+	record OrderInventoryCommand {
+		string suppplierId;
+		string productId;
+		string purchaseOrderId;
+		int quantity;
+		InventoryOrderStatus status = "ORDERING";
+		timestamp_ms timestamp;
+	}
+
+	record InventoryOrderedEvent {
+		string suppplierId;
+		string productId;
+		string purchaseOrderId;
+		int quantity;
+		InventoryOrderStatus status;
+		timestamp_ms timestamp;
+		timestamp_ms commandTimestamp;
+	}
+
+	record RemoveInventoryCommand {
+		string productId;
+		int quantity;
+		timestamp_ms timestamp;
+	}
+
+	record InventoryRemovedEvent {
+		string productId;
+		int quantity;
+		timestamp_ms timestamp;
+		timestamp_ms commandTimestamp;
+	}
+
+	record ReserveInventoryCommand {
+		string productId;
+		int quantity;
+		timestamp_ms timestamp;
+	}
+
+	record InventoryReservedEvent {
+		string productId;
+		int quantity;
+		timestamp_ms timestamp;
+		timestamp_ms commandTimestamp;
+	}
+
+	record InventorySummary {
+		string productId;
+		int quantity;
+		timestamp_ms lastUpdated;
+	}
+}

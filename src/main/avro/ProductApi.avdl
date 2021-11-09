@@ -1,0 +1,61 @@
+@namespace("com.sample.product.api")
+protocol ProductApi {
+	enum ProductStatus {BACKORDERABLE, DISCONTINUED, RECALLED}
+
+	record AddProductCommand {
+		string id;
+		string supplierId;
+		string name;
+		string description;
+		int warehouseLimit;
+		ProductStatus status = "BACKORDERABLE";
+		timestamp_ms timestamp;
+	}
+
+	record ProductAddedEvent {
+		string id;
+		string supplierId;
+		string name;
+		string description;
+		int warehouseLimit;
+		ProductStatus status;
+		timestamp_ms timestamp;
+		timestamp_ms commandTimestamp;
+	}
+
+	record DiscontinueProductCommand {
+		string id;
+		ProductStatus status = "DISCONTINUED";
+		timestamp_ms timestamp;
+	}
+
+	record ProductDiscontinuedEvent {
+		string id;
+		ProductStatus status;
+		timestamp_ms timestamp;
+		timestamp_ms commandTimestamp;
+	}
+
+	record RecallProductCommand {
+		string id;
+		ProductStatus status = "RECALLED";
+		timestamp_ms timestamp;
+	}
+
+	record ProductRecalledEvent {
+		string id;
+		ProductStatus status;
+		timestamp_ms timestamp;
+		timestamp_ms commandTimestamp;
+	}
+
+	record ProductSummary {
+		string id;
+		string supplierId;
+		string name;
+		string description;
+		int warehouseLimit;
+		ProductStatus status;
+		timestamp_ms lastUpdated;
+	}
+}

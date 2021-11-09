@@ -1,0 +1,84 @@
+@namespace("com.sample.supplier.api")
+protocol SupplierApi {
+	enum SupplierStatus {ENABLING, ENABLED, BANNED}
+
+	record AddSupplierCommand {
+		string id;
+		string name;
+		string taxId;
+		string countryCode;
+		SupplierStatus status = "ENABLING";
+		timestamp_ms timestamp;
+	}
+
+	record SupplierAddedEvent {
+		string id;
+		string name;
+		string taxId;
+		string countryCode;
+		SupplierStatus status;
+		timestamp_ms timestamp;
+		timestamp_ms commandTimestamp;
+	}
+
+	record EnableSupplierCommand {
+		string id;
+		SupplierStatus status = "ENABLED";
+		timestamp_ms timestamp;
+	}
+
+	record SupplierEnabledEvent {
+		string id;
+		SupplierStatus status;
+		timestamp_ms timestamp;
+		timestamp_ms commandTimestamp;
+	}
+
+	record BanSupplierCommand {
+		string id;
+		SupplierStatus status = "BANNED";
+		timestamp_ms timestamp;
+	}
+
+	record SupplierBannedEvent {
+		string id;
+		SupplierStatus status;
+		timestamp_ms timestamp;
+		timestamp_ms commandTimestamp;
+	}
+
+	record ReinstateSupplierCommand {
+		string id;
+		SupplierStatus status = "ENABLED";
+		timestamp_ms timestamp;
+	}
+
+	record SupplierReinstatedEvent {
+		string id;
+		SupplierStatus status;
+		timestamp_ms timestamp;
+		timestamp_ms commandTimestamp;
+	}
+
+	record SupplierSummary {
+		string id;
+		string name;
+		string taxId;
+		string countryCode;
+		SupplierStatus status;
+		timestamp_ms lastUpdated;
+	}
+
+	enum SupplierVerificationResult {PASSED, FAILED}
+
+	record SupplierVerificationRequest {
+		string countryCode;
+		string taxId;
+	}
+
+	record SupplierVerificationResponse {
+		string countryCode;
+		string taxId;
+		SupplierVerificationResult result;
+	}
+}

@@ -1,0 +1,19 @@
+CREATE TABLE SUPPLIER_STATUS
+(
+    status VARCHAR PRIMARY KEY NOT NULL
+);
+
+INSERT INTO SUPPLIER_STATUS(status)
+VALUES ('ENABLING'),
+       ('ENABLED'),
+       ('BANNED');
+
+CREATE TABLE SUPPLIER
+(
+    id           VARCHAR   NOT NULL PRIMARY KEY,
+    name         VARCHAR   NOT NULL,
+    tax_id       VARCHAR   NOT NULL,
+    country_code VARCHAR   NOT NULL,
+    status       VARCHAR   NOT NULL REFERENCES SUPPLIER_STATUS (status),
+    last_updated TIMESTAMP NOT NULL
+);

@@ -1,0 +1,21 @@
+digraph finite_state_machine {
+  // Formats
+  graph [fontname = "roboto"];
+  node [fontname = "roboto"];
+  edge [fontname = "roboto"];
+	rankdir=LR;
+	size="8,5"
+
+  // Title
+  labelloc="t";
+  label="Product Aggregate Lifecycle\n\n";
+
+  // Body
+  init [label="", shape=point]
+	node [shape = doublecircle];
+	init -> BACKORDERABLE;
+	BACKORDERABLE -> DISCONTINUED;
+	DISCONTINUED -> BACKORDERABLE;
+	BACKORDERABLE -> RECALLED;
+	RECALLED -> BACKORDERABLE;
+}

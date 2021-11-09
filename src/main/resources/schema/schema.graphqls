@@ -1,0 +1,19 @@
+type Mutation {
+    addSupplier(input: AddSupplierCommand!): SupplierAddedEvent
+}
+
+input AddSupplierCommand {
+    name: String!
+    taxId: String!
+    countryCode: String!
+}
+
+type SupplierAddedEvent {
+    id: String!
+    name: String!
+    taxId: String!
+    countryCode: String!
+    status: String!
+    timestamp: String!
+    commandTimestamp: String!
+}
